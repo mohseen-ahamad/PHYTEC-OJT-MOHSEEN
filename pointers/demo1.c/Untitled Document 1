@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+void minMax(int arr[], int len, int *min, int *max)
+{
+    *min = *max = arr[0];
+    int i;
+    for (i = 1; i < len; i++)
+    {
+        if (arr[i] > *max)
+            *max = arr[i];
+        if (arr[i] < *min)
+            *min = arr[i];
+    }
+}
+
+int main()
+{
+    int arr[] = {23, 4, 21, 98, 74, 97, 64, 567, 87, 98, 3};
+    int min, max;
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    // Pass the addresses of min and max to the minMax function
+    minMax(arr, len, &min, &max);
+
+    printf("Minimum number is: %d and maximum number is: %d", min, max);
+    return 0;
+}
+
