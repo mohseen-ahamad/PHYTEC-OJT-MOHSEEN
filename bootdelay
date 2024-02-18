@@ -1,0 +1,31 @@
+1.For changing the BOOT DELAY OF 2ND BOOT LOADER we should download the 2ND boot loader file from git hub.
+
+https://github.com/rugged-board/uboot-rba5d2x.git
+
+2.after downloading from the github extract the zip file.
+
+3. Go to the uboot-rba5d2x folder and enable the Toolchain.
+
+4. Give the below commands :
+
+ make mrproper.
+
+5.After give the defconifg command : make rugged_board_a5d2x_mmc1_defconfig
+
+6. here there are 2 types options for menuconifg.
+
+   1.vi .config   2.make menuconfig
+
+open the menuconfig for GUI representation.
+
+open the vi .config for text representation.
+
+7. change the delay in beffore automatically boot. 
+ (set the delay in this line)
+
+8. save the file and fgive the make command for generating the image.
+
+9. if we dont get any errors while building the image then the iamge is succesfully built.
+
+10.copy the u-boot.bin iamge into our sd card boot partiton and reset thr board and check the boot delay.
+
