@@ -1,0 +1,40 @@
+CHANGING BAUDRATE 
+=================
+
+1. OPEN THE U-BOOT FOLDER (DOWNLOADED FROM GIT HUB )
+
+2. ENABLE THE TOOL CHAIN.
+
+3.GIVE THE DEFCONIG COMMAND 
+
+  SD-CARD : make rugged_board_a5d2x_mmc1_defconfig
+
+  NOR-FLASH : make rugged_board_a5d2x_qspiflash_defconfig
+
+4. GO FOR THE MAKE MENUCONFIG 
+   
+   IN MENU CONFIG GO TO DEIVCE DRIVERS --> SERIAL DRIVERS -->DEFAULT BAUDRATE.
+
+5. SAVE THE CHANGES AND COPY THE U-BOOT.BIN IAMAGE.
+
+FOR SD-CARD = COPY THE IMAGE IN BOOT PARTITON.
+
+FOR NOR FLASH = cp u-boot.bin /var/lib/tftpboot/
+
+In rugged board terminal type Below commands
+
+setenv ipaddr 192.168.1.20
+setenv serverip 192.168.1.247
+ping 192.168.1.247
+saveenv
+
+
+sf probe
+tftp 0x21FF0000 u-boot.bin
+sf erase 0x20000 0x80000
+sf write 0x21FF0000 0x20000 0x80000
+
+after giving the 4 commands give "reset" comand 
+
+
+
