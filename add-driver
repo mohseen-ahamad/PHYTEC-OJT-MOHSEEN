@@ -1,0 +1,20 @@
+Adding command in the U-boot 
+===========================
+1.for adding the led driver in u-boot cpoy the led.c file in the drivers/led/
+
+2. in drivwrs/led/ give "vi Makefile" and add the onj file in the Makefile
+     obj-y += sled.o
+
+3. add kconfig in the same location by giving the "vi Kconfig"
+
+config SLED
+        bool "SLED support for LEDs"
+        depends on LED
+        help
+          Enable support for LEDs which are connected to GPIO lines. These
+          GPIOs may be on the SoC or some other device which provides GPIOs.
+          The GPIO driver must used driver model. LEDs are configured using
+          the device tree.
+
+4.
+
